@@ -1324,3 +1324,49 @@ source "arch/arm64/crypto/Kconfig"
 endif
 
 source "lib/Kconfig"
+
+# Xiaomi configuration options
+menu "Xiaomi configuration options"
+
+config MACH_XIAOMI
+        bool "Xiaomi device"
+        depends on ARCH_QCOM
+        help
+          Support for Xiaomi products
+
+config MACH_XIAOMI_SDM710
+        bool "Xiaomi SDM710"
+        depends on ARCH_SDM670
+        select MACH_XIAOMI
+        help
+          Support for SDM710-based Xiaomi variants
+
+menu "Xiaomi board selection"
+
+config MACH_XIAOMI_E2
+        bool "E2 board"
+        select MACH_XIAOMI_SDM710
+        help
+          Support for Xiaomi Mi 8 SE (sirius)
+
+config MACH_XIAOMI_F2
+        bool "F2 board"
+        select MACH_XIAOMI_SDM710
+        help
+          Support for Xiaomi Mi 9 SE (grus)
+
+config MACH_XIAOMI_F3B
+        bool "F3B board"
+        select MACH_XIAOMI_SDM710
+        help
+          Support for Xiaomi MI CC 9 (pyxis)
+
+config MACH_XIAOMI_F3M
+        bool "F3M board"
+        select MACH_XIAOMI_SDM710
+        help
+          Support for Xiaomi MI CC 9 Meitu Edition (vela)
+
+endmenu
+
+endmenu
